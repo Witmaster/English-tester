@@ -1,0 +1,8 @@
+D:\Git\English tester\English tester\bin\Release\English tester.exe.config
+D:\Git\English tester\English tester\bin\Release\English tester.exe
+D:\Git\English tester\English tester\bin\Release\English tester.pdb
+D:\Git\English tester\English tester\obj\Release\English_tester.Form1.resources
+D:\Git\English tester\English tester\obj\Release\English_tester.Properties.Resources.resources
+D:\Git\English tester\English tester\obj\Release\English tester.csproj.GenerateResource.Cache
+D:\Git\English tester\English tester\obj\Release\English tester.exe
+D:\Git\English tester\English tester\obj\Release\English tester.pdb

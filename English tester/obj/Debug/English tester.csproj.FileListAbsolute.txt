@@ -1,0 +1,9 @@
+D:\Git\English tester\English tester\bin\Debug\English tester.exe.config
+D:\Git\English tester\English tester\bin\Debug\English tester.exe
+D:\Git\English tester\English tester\bin\Debug\English tester.pdb
+D:\Git\English tester\English tester\obj\Debug\English tester.csprojResolveAssemblyReference.cache
+D:\Git\English tester\English tester\obj\Debug\English_tester.Form1.resources
+D:\Git\English tester\English tester\obj\Debug\English_tester.Properties.Resources.resources
+D:\Git\English tester\English tester\obj\Debug\English tester.csproj.GenerateResource.Cache
+D:\Git\English tester\English tester\obj\Debug\English tester.exe
+D:\Git\English tester\English tester\obj\Debug\English tester.pdb
