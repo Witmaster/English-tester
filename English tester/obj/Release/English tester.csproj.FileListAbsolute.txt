@@ -6,3 +6,4 @@ D:\Git\English tester\English tester\obj\Release\English_tester.Properties.Resou
 D:\Git\English tester\English tester\obj\Release\English tester.csproj.GenerateResource.Cache
 D:\Git\English tester\English tester\obj\Release\English tester.exe
 D:\Git\English tester\English tester\obj\Release\English tester.pdb
+D:\Git\English tester\English tester\obj\Release\English tester.csprojResolveAssemblyReference.cache

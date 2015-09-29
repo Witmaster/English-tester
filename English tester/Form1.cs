@@ -35,7 +35,7 @@ namespace English_tester
                     score = 0;
                     label1.ForeColor = System.Drawing.Color.Black;
                     RestartButton.Text = "New list";
-                    string[] temp = textBox1.Text.Split(new string[] { " ", Environment.NewLine, ";", ",", ".", ":" },
+                    string[] temp = textBox1.Text.Split(new string[] { "\u0009", Environment.NewLine, ";", ",", ".", ":" },
                         StringSplitOptions.RemoveEmptyEntries);
                     for (int i = 0; i < temp.Length; i += 2)
                     {
@@ -63,7 +63,7 @@ namespace English_tester
                 }
                 else
                 {
-                    label1.Text = "Enter the word pairs separated by ; , . : space or newline";
+                    label1.Text = "Enter the word pairs separated by ; , . : or newline";
                     label1.ForeColor = System.Drawing.Color.Red;
                 }
             }
@@ -74,6 +74,7 @@ namespace English_tester
                 NextButton.Enabled = false;
                 vocabulary = new Dictionary<string, string>();
                 index = -1;
+                showResult = false;
             }
         }
 
@@ -82,7 +83,7 @@ namespace English_tester
         {
             if (!skip)
             {
-                if (showResult)
+                if (showResult && index < keys.Length)
                 {
                     if (vocabulary[keys[index]] == textBox1.Text.ToLower())
                     {
@@ -98,16 +99,17 @@ namespace English_tester
                 }
                 else
                 {
-                    index++;
-                    showResult = true;
-                    label1.ForeColor = System.Drawing.Color.Black;
-                    label1.Text = keys[index];
                     if (index == vocabulary.Count)
                     {
                         NextButton.Enabled = false;
                         SkipButton.Enabled = false;
-                        label1.Text = "this was the last one. You scored " + score + " out of " +  index + " points";
+                        label1.Text = "this was the last one. You scored " + score + " out of " + index + " points";
+                        return;
                     }
+                    index++;
+                    showResult = true;
+                    label1.ForeColor = System.Drawing.Color.Black;
+                    label1.Text = keys[index];
                 }
             }
             else
