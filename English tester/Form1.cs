@@ -21,13 +21,13 @@ namespace English_tester
         private string[] keys;
         int index = -1;
         private int score;
-        Dictionary<string, string> vocabulary = new Dictionary<string, string>();
+        Dictionary<string, string[]> vocabulary = new Dictionary<string, string[]>();
 
         private void RestartButton_Click(object sender, EventArgs e)
         {
             if (restart)
             {
-                if (textBox1.Text.Split(new string[] { " ", Environment.NewLine, ";", ",", ".", ":" },
+                if (textBox1.Text.Split(new string[] { " ", Environment.NewLine, ";",":" },
                         StringSplitOptions.RemoveEmptyEntries).Length > 2)
                 {
                     restart = false;
@@ -35,13 +35,13 @@ namespace English_tester
                     score = 0;
                     label1.ForeColor = System.Drawing.Color.Black;
                     RestartButton.Text = "New list";
-                    string[] temp = textBox1.Text.Split(new string[] { "\u0009", Environment.NewLine, ";", ",", ".", ":" },
+                    string[] temp = textBox1.Text.Split(new string[] { "\u0009", Environment.NewLine, ";",":" },
                         StringSplitOptions.RemoveEmptyEntries);
                     for (int i = 0; i < temp.Length; i += 2)
                     {
                         if (i + 1 < temp.Length)
                         {
-                            vocabulary.Add(temp[i].ToLower(), temp[i + 1].ToLower());
+                           
                         }
                     }
                          keys = vocabulary.Keys.ToArray<string>();
@@ -63,7 +63,7 @@ namespace English_tester
                 }
                 else
                 {
-                    label1.Text = "Enter the word pairs separated by ; , . : or newline";
+                    label1.Text = "Enter the word pairs separated by ; : or newline";
                     label1.ForeColor = System.Drawing.Color.Red;
                 }
             }
@@ -72,7 +72,7 @@ namespace English_tester
                 restart = true;
                 RestartButton.Text = "Begin";
                 NextButton.Enabled = false;
-                vocabulary = new Dictionary<string, string>();
+                vocabulary = new Dictionary<string, string[]>();
                 index = -1;
                 showResult = false;
             }
@@ -85,7 +85,13 @@ namespace English_tester
             {
                 if (showResult && index < keys.Length)
                 {
-                    if (vocabulary[keys[index]] == textBox1.Text.ToLower())
+                    bool isCorrect = false;
+                    for (int i = 0; i< vocabulary[keys[index]].Length; i++)
+                    {
+                        if (vocabulary[keys[index]][i] == textBox1.Text.ToLower())
+                            isCorrect = true;
+                    }
+                    if (isCorrect)
                     {
                         label1.Text = "Correct!";
                         score++;
