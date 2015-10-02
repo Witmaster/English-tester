@@ -41,7 +41,29 @@ namespace English_tester
                     {
                         if (i + 1 < temp.Length)
                         {
-                           
+                            string[] tempKey = temp[i].Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                            string[] tempValues = temp[i + 1].Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                            foreach (string key in tempKey)
+                                {
+                                    if (vocabulary.ContainsKey(key))
+                                    {
+                                        string[] tempNewQtyArray = new string[vocabulary[key].Length + tempValues.Length];
+                                        int index = 0;
+                                        for (; index < vocabulary[key].Length; index++)
+                                        {
+                                            tempNewQtyArray[index] = vocabulary[key][index];
+                                        }   
+                                        for (int z = 0; z < tempValues.Length; z++)
+                                        {   
+                                            tempNewQtyArray[index++] = tempValues[z];
+                                        }
+                                    vocabulary[key] = tempNewQtyArray;
+                                    }
+                                    else
+                                    {
+                                      vocabulary[key] = tempValues;
+                                    }
+                                }
                         }
                     }
                          keys = vocabulary.Keys.ToArray<string>();
