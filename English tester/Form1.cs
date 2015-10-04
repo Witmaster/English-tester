@@ -28,7 +28,7 @@ namespace English_tester
             if (restart)
             {
                 if (textBox1.Text.Split(new string[] { " ", Environment.NewLine, ";",":" },
-                        StringSplitOptions.RemoveEmptyEntries).Length > 2)
+                        StringSplitOptions.RemoveEmptyEntries).Length >= 2)
                 {
                     restart = false;
                     index = -1;
@@ -57,7 +57,7 @@ namespace English_tester
                                         {   
                                             tempNewQtyArray[index++] = tempValues[z];
                                         }
-                                    vocabulary[key] = tempNewQtyArray;
+                                        vocabulary[key] = tempNewQtyArray;
                                     }
                                     else
                                     {
@@ -105,6 +105,7 @@ namespace English_tester
         {
             if (!skip)
             {
+                textBox1.Text = "";
                 if (showResult && index < keys.Length)
                 {
                     bool isCorrect = false;
@@ -121,23 +122,31 @@ namespace English_tester
                     else
                     {
                         label1.Text = "Wrong!";
+                        textBox1.Text = "";
+                        for (int i = 0; i < vocabulary[keys[index]].Length; i++)
+                        {
+                            textBox1.Text = textBox1.Text + vocabulary[keys[index]][i] + Environment.NewLine;
+                        }
                     }
                     label1.ForeColor = System.Drawing.Color.Red;
                     showResult = false;
                 }
                 else
                 {
-                    if (index == vocabulary.Count)
+                    if (index >= keys.Length)
                     {
                         NextButton.Enabled = false;
                         SkipButton.Enabled = false;
                         label1.Text = "this was the last one. You scored " + score + " out of " + index + " points";
                         return;
                     }
-                    index++;
-                    showResult = true;
-                    label1.ForeColor = System.Drawing.Color.Black;
-                    label1.Text = keys[index];
+                    else
+                    {
+                        index++;
+                        showResult = true;
+                        label1.ForeColor = System.Drawing.Color.Black;
+                        label1.Text = keys[index];
+                    }
                 }
             }
             else
@@ -145,7 +154,6 @@ namespace English_tester
                 showResult = false;
                 NextWord(false);
             }
-            textBox1.Text = "";
         }
 
         private void NextButton_Click(object sender, EventArgs e)
